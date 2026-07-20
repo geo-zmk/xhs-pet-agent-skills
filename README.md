@@ -1,10 +1,10 @@
 # xhs-pet-agent-skills
 
-小红书美短猫账号运营 Agent Skill — 完整的 AI 内容运营闭环系统。
+小红书账号运营 Agent Skill — 完整的 AI 内容运营闭环系统。
 
 ## 概述
 
-`xhs-pet-agent-skills` 是一个生产级 Agent Skill，帮助专注于「美国短毛猫（美短）」的小红书垂类账号实现从账号分析、热点发现、内容生成到数据复盘的完整运营闭环。
+`xhs-pet-agent-skills` 是一个生产级 Agent Skill，帮助专注于小红书垂类账号实现从账号分析、热点发现、内容生成到数据复盘的完整运营闭环。
 
 ## 目录结构
 
