@@ -1,0 +1,140 @@
+# xhs-cat-creator 配置文件
+
+# ============================================================
+# 账号配置
+# ============================================================
+account:
+  name: "美短猫账号"
+  profile_url: ""  # 小红书主页URL
+  followers: 0
+  platform: "xiaohongshu"
+
+# ============================================================
+# 关键词配置
+# ============================================================
+keywords:
+  core:
+    - "美短"
+    - "美国短毛猫"
+    - "美短花色"
+    - "美短幼猫"
+    - "美短性格"
+    - "美短养护"
+    - "美短鉴定"
+    - "美短价格"
+  
+  colors:
+    - "银虎斑"
+    - "棕虎斑"
+    - "蓝色美短"
+    - "白色美短"
+    - "奶油色美短"
+    - "玳瑁美短"
+    - "金色美短"
+  
+  comparison:
+    - "美短 英短 区别"
+    - "美短 狸花猫 区别"
+  
+  trending:
+    - "美短 热门"
+    - "美短 热搜"
+    - "美短 可爱"
+    - "美短 日常"
+
+# ============================================================
+# 采集配置
+# ============================================================
+crawler:
+  max_notes: 30
+  scroll_wait: 2.0  # 滚动后等待秒数
+  retry_times: 3
+  headless: false  # 是否无头模式
+  user_agent: "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) ..."
+  
+  selectors:
+    note_item: "section.note-item, .note-item"
+    title: ".title, h3"
+    likes: ".like-wrapper .count"
+    content: ".note-content, .content"
+
+# ============================================================
+# 评分权重
+# ============================================================
+scoring:
+  topic_rank:
+    hot_score: 0.25
+    account_match: 0.20
+    user_interest: 0.15
+    viral_probability: 0.20
+    differentiation: 0.10
+    duplicate_risk: -0.10
+  
+  hot_score:
+    like_rate: 0.20
+    collect_rate: 0.25
+    comment_rate: 0.25
+    interact_rate: 0.20
+    growth_contribution: 0.10
+
+# ============================================================
+# 去重配置
+# ============================================================
+dedup:
+  similarity_threshold: 0.70  # 重复判定阈值
+  high_risk_threshold: 0.85   # 高风险阈值
+  use_semantic: false         # 是否使用语义去重（需要模型）
+  embedding_model: "BAAI/bge-small-zh-v1.5"
+
+# ============================================================
+# 内容生成配置
+# ============================================================
+content:
+  title_max_length: 20
+  body_min_length: 600
+  body_max_length: 900
+  tags_count: 5
+  images_per_note: 5
+  aspect_ratio: "3:4"
+
+# ============================================================
+# 发布配置
+# ============================================================
+publish:
+  default_time: "20:00"
+  time_slots:
+    weekday: ["12:00-14:00", "19:00-22:00"]
+    weekend: ["10:00-13:00", "16:00-22:00"]
+  best_days: ["周二", "周四", "周六"]
+  
+  # 发布辅助 - 自动发布（需安装xhs-publisher）
+  auto_publish:
+    enabled: false
+    platform: "xhs-publisher"
+
+# ============================================================
+# 知识库路径
+# ============================================================
+memory:
+  account_profile: "memory/account_profile.json"
+  content_history: "memory/content_history.json"
+  raw_notes: "memory/raw_notes.json"
+  analysis_report: "memory/analysis_report.json"
+  error_log: "memory/error_log.json"
+  vector_store: "memory/vector_store"
+
+# ============================================================
+# 日志配置
+# ============================================================
+logging:
+  level: "INFO"
+  file: "memory/system.log"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# ============================================================
+# 错误重试
+# ============================================================
+retry:
+  max_retries: 3
+  retry_delay: 5.0
+  backoff_factor: 2.0
